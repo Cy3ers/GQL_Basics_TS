@@ -7,6 +7,7 @@ export interface User {
 export interface CreateUserInput {
   name: string;
   email: string;
+  password: string;
 }
 
 export interface UpdateUserInput {
@@ -14,6 +15,12 @@ export interface UpdateUserInput {
   email?: string;
 }
 
+export interface AuthUser {
+  id: number;
+  name: string;
+}
+
 export interface Context {
   users: User[];
+  user: AuthUser | null;
 }

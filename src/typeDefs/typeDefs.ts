@@ -3,10 +3,17 @@ export const typeDefs = `#graphql
     id: ID!
     name: String!
     email: String!
+    password: String!
   }
   input CreateUserInput {
     name: String!
     email: String!
+    password: String!
+  }
+
+  type AuthPayLoad {
+    user: User!
+    token: String!
   }
 
   input UpdateUserInput {
@@ -20,8 +27,9 @@ export const typeDefs = `#graphql
   }
 
   type Mutation {
-    createUser(input: CreateUserInput!): User
+    register(input: CreateUserInput!): User!
+    login(name: String!, password: String!): AuthPayLoad!
     updateUser(id: ID!, input: UpdateUserInput!): User
-    deleteUser(id: ID!): User
+    deleteUser(id: ID!): String!
   }
 `;
